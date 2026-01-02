@@ -1,11 +1,12 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const VslSection: React.FC = () => {
   const [videoUrl, setVideoUrl] = useState("https://drive.google.com/file/d/1m_duvJnqtyxx3HVFLIRuqcqWnXQVuTDT/preview");
   const [isLocalVideo, setIsLocalVideo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -16,9 +17,20 @@ const VslSection: React.FC = () => {
     }
   };
 
-  const videoSrcWithAutoplay = videoUrl.includes('?') 
-    ? `${videoUrl}&autoplay=1` 
-    : `${videoUrl}?autoplay=1`;
+  // Sync isPlaying state with the local video element
+  useEffect(() => {
+    if (isLocalVideo && videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.play().catch(e => console.error("Playback failed:", e));
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isPlaying, isLocalVideo]);
+
+  const videoSrc = isPlaying 
+    ? (videoUrl.includes('?') ? `${videoUrl}&autoplay=1` : `${videoUrl}?autoplay=1`)
+    : videoUrl;
 
   return (
     <div className="w-full space-y-8 md:space-y-12">
@@ -44,7 +56,7 @@ const VslSection: React.FC = () => {
             className="group relative flex flex-col items-center transition-all duration-500 hover:scale-[1.02]"
             aria-label="Initialize Growth Protocol Video"
           >
-            {/* Top Label: Explicit instruction replaces technical signals */}
+            {/* Top Label */}
             <div className="flex items-center gap-4 mb-4">
               <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-blue-600"></div>
               <div className="flex items-center gap-2.5">
@@ -56,7 +68,7 @@ const VslSection: React.FC = () => {
               <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-blue-600"></div>
             </div>
             
-            {/* Main Headline with Chromatic Aberration Effect */}
+            {/* Main Headline */}
             <div className="relative max-w-5xl">
               <h2 className="chromatic-text text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase leading-tight md:leading-[0.95] tracking-tighter transition-all">
                 3 Ways We Can Make You <br/> More Money—Starting Now
@@ -75,9 +87,10 @@ const VslSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Video Container - Permanent Tactical Frame */}
+      {/* Video Container - Frame is always visible, custom thumbnail overlay removed */}
       <div className="relative w-full aspect-video overflow-hidden border border-white/10 bg-black shadow-[0_0_60px_rgba(0,102,255,0.15)] group rounded-sm">
-        {/* HUD Overlay (Always Visible) */}
+        
+        {/* HUD Overlay (Visible Always) */}
         <div className="absolute inset-0 pointer-events-none z-20 border-[20px] md:border-[40px] border-transparent">
           <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-blue-600/40 group-hover:border-blue-500 transition-colors"></div>
           <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-blue-600/40 group-hover:border-blue-500 transition-colors"></div>
@@ -91,46 +104,27 @@ const VslSection: React.FC = () => {
         {/* Scanline Effect Overlay */}
         <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] z-10 bg-[length:100%_2px,3px_100%] opacity-20"></div>
 
-        {!isPlaying ? (
-          <div 
-            className="absolute inset-0 flex items-center justify-center bg-zinc-950/90 backdrop-blur-sm cursor-pointer group/overlay"
-            onClick={() => setIsPlaying(true)}
-          >
-            <div className="relative flex flex-col items-center gap-6">
-              <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-white/20 bg-white/5 flex items-center justify-center transition-all duration-500 group-hover/overlay:bg-blue-600 group-hover/overlay:border-blue-400 group-hover/overlay:scale-110 shadow-[0_0_40px_rgba(0,0,0,0.5)] group-hover/overlay:shadow-[0_0_80px_rgba(37,99,235,0.6)]">
-                <div className="absolute inset-0 rounded-full border border-blue-500/50 animate-ping opacity-40"></div>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16 ml-2 text-white/80 group-hover/overlay:text-white filter drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <p className="text-white font-black uppercase tracking-[0.5em] text-[10px] md:text-sm animate-pulse">
-                INITIALIZE TRANSMISSION
-              </p>
-            </div>
-          </div>
-        ) : (
-          <div className="w-full h-full">
-            {isLocalVideo ? (
-              <video
-                src={videoUrl}
-                autoPlay
-                muted={false}
-                playsInline
-                loop
-                controls
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <iframe
-                src={videoSrcWithAutoplay}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                frameBorder="0"
-              />
-            )}
-          </div>
-        )}
+        <div className="w-full h-full">
+          {isLocalVideo ? (
+            <video
+              ref={videoRef}
+              src={videoUrl}
+              muted={false}
+              playsInline
+              loop
+              controls
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <iframe
+              src={videoSrc}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              frameBorder="0"
+            />
+          )}
+        </div>
       </div>
 
       <div className="flex justify-center">
