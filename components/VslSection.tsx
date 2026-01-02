@@ -42,8 +42,9 @@ const VslSection: React.FC = () => {
           <button 
             onClick={() => setIsPlaying(true)}
             className="group relative flex flex-col items-center transition-all duration-500 hover:scale-[1.02]"
+            aria-label="Initialize Growth Protocol Video"
           >
-            {/* Top Label: Explicit instruction replaces "Signal Initialized" */}
+            {/* Top Label: Explicit instruction replaces technical signals */}
             <div className="flex items-center gap-4 mb-4">
               <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-blue-600"></div>
               <div className="flex items-center gap-2.5">
@@ -55,7 +56,7 @@ const VslSection: React.FC = () => {
               <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-blue-600"></div>
             </div>
             
-            {/* Main Headline with Chromatic Aberration Effect moved from secondary text */}
+            {/* Main Headline with Chromatic Aberration Effect */}
             <div className="relative max-w-5xl">
               <h2 className="chromatic-text text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase leading-tight md:leading-[0.95] tracking-tighter transition-all">
                 3 Ways We Can Make You <br/> More Money—Starting Now
