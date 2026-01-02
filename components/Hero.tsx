@@ -14,18 +14,18 @@ const Hero: React.FC = () => {
         </p>
       </div>
 
-      <div className="py-8 md:py-12 border-y border-white/5 bg-white/[0.01]">
-        <div className="mx-auto max-w-6xl space-y-6 md:space-y-10">
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 md:gap-x-12 md:gap-y-6 px-4">
+      <div className="py-12 md:py-16 border-y border-white/5 bg-white/[0.02] shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]">
+        <div className="mx-auto max-w-7xl space-y-6 md:space-y-10">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-12 md:gap-y-6 px-4">
             {BRANDS_ROW_1.map((brand, idx) => (
-              <div key={idx} className="text-[10px] sm:text-sm md:text-lg font-black text-white/20 hover:text-white transition-all cursor-default uppercase tracking-widest whitespace-nowrap">
+              <div key={idx} className="text-[10px] sm:text-xs md:text-lg lg:text-xl font-black text-white/40 hover:text-white transition-all duration-300 cursor-default uppercase tracking-[0.2em] whitespace-nowrap">
                 {brand}
               </div>
             ))}
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 md:gap-x-12 md:gap-y-6 px-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-12 md:gap-y-6 px-4">
             {BRANDS_ROW_2.map((brand, idx) => (
-              <div key={idx} className="text-[10px] sm:text-sm md:text-lg font-black text-white/20 hover:text-white transition-all cursor-default uppercase tracking-widest whitespace-nowrap">
+              <div key={idx} className="text-[10px] sm:text-xs md:text-lg lg:text-xl font-black text-white/40 hover:text-white transition-all duration-300 cursor-default uppercase tracking-[0.2em] whitespace-nowrap">
                 {brand}
               </div>
             ))}

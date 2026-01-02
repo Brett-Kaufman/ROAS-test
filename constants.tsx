@@ -1,8 +1,8 @@
 
 import { Testimonial } from './types';
 
-export const BRANDS_ROW_1 = ["Jeremy Haynes", "Ben Hartman", "Daniel Jacob", "Jordan Belfort", "Peter Sage"];
-export const BRANDS_ROW_2 = ["Kasandrinos Olive Oil", "James Swanick", "Bijal Patel", "IFCA", "Clickbank"];
+export const BRANDS_ROW_1 = ["Jeremy Haynes", "Ben Hartman", "Jordan Belfort", "Peter Sage", "BIO OPTIMIZER"];
+export const BRANDS_ROW_2 = ["Kasandrinos Olive Oil", "James Swanick", "IFCA", "Clickbank"];
 
 export const CAPABILITIES = [
   "Ensure your emails aren't going to spam.",
@@ -29,28 +29,12 @@ export const CASE_STUDIES: Testimonial[] = [
     videoUrl: "https://drive.google.com/file/d/1Kllacb8MRYQSKKiFMnjnYmZDuIEwxl9V/preview"
   },
   {
-    headline: "Unlocking an additional $90,000/mo through high-conviction copywriting.",
-    brand: "BIJAL PATEL",
-    category: "HIGH-TICKET SALES & POSITIONING",
-    description: "Despite spending $100k on masterminds, Bijal's copy felt 'flat' and inconsistent, with revenue plateauing at $50k. We implemented subtle psychological tweaks to bring out her unique voice and conviction. The result was an explosion in inbound messenger requests and a record-shattering $140k month.",
-    fixHighlight: "Injected high-conviction 'voice' into flat copy. $50k -> $140k/mo.",
-    videoUrl: "https://drive.google.com/file/d/1zRaaCm96xWLDms-g47t8wQ5_UNYRl7B3/preview"
-  },
-  {
     headline: "3x Return on Sales from Email List",
     brand: "JAMES SWANWICK",
     category: "ALCOHOL-FREE LIFESTYLE",
     description: "Improved open rates, booked calls, and helped the sales guys get people back onto calls using high-precision email targeting and conversion strategies.",
     fixHighlight: "Increased open rates, booked calls, and sales (that’s what really matters)",
     videoUrl: "https://drive.google.com/file/d/1HZPhHR2gKt0jkhA2joZcK16w_YSylRhU/preview"
-  },
-  {
-    headline: "Scaling to an additional $55K/month by killing paid ads and fixing messaging.",
-    brand: "DANIEL JACOB",
-    category: "HIGH-TICKET COACHING, DATING MASTERY",
-    description: "Daniel was burning $17k on business coaching that failed to resonate, leaving him stuck at $5-8k/month with unqualified leads. We advised him to pause all ad spend and focus on organic messaging precision. The shift was immediate: revenue jumped to $20k, then surged to a consistent $40-60k/month without spending a dime on ads.",
-    fixHighlight: "Paused paid ads. Refined messaging resonance. $8k -> $60k/mo.",
-    videoUrl: "https://drive.google.com/file/d/1-g1mFv9xlLwx7cTHWBSPnGGcVklAQdHJ/preview"
   },
   {
     headline: "Recovering $127,400 from a single email broadcast.",
