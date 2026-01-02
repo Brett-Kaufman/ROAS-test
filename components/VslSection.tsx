@@ -67,7 +67,7 @@ const VslSection: React.FC = () => {
             {!isPlaying && (
               <div className="mt-10 flex flex-col items-center gap-3">
                 <div className="flex items-center gap-2 text-[10px] md:text-xs font-mono text-white/50 uppercase tracking-[0.3em] animate-pulse">
-                  <span className="text-blue-500">>>></span> INITIALIZE GROWTH PROTOCOL <span className="text-blue-500 text-lg">↓</span>
+                  <span className="text-blue-500">{">>>"}</span> INITIALIZE GROWTH PROTOCOL <span className="text-blue-500 text-lg">↓</span>
                 </div>
               </div>
             )}
