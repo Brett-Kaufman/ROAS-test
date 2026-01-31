@@ -1,3 +1,4 @@
+
 import { Testimonial } from './types';
 
 export const TITAN_BRANDS = [
@@ -73,5 +74,23 @@ export const CASE_STUDIES: Testimonial[] = [
     fixHighlight: "Shifted to 'lifestyle-first' cinematic short-form content.",
     videoUrl: "https://fppmm7b7cy2oyyvq.public.blob.vercel-storage.com/tony-kasadrinos.mp4",
     posterUrl: "/thumbnails/kasandrinos.jpg"
+  },
+  {
+    headline: "Viral Ad Strategy for High-Performance Growth.",
+    brand: "ABRAM ANDERSON",
+    category: "CREATIVE INTELLIGENCE, PAID MEDIA",
+    description: "Abram needed a creative hook that didn't just stop the scroll but forced engagement. We deployed a precision-targeted viral ad sequence that maximized click-through rates and optimized conversion for his high-ticket offers.",
+    fixHighlight: "Viral Creative Deployment. High-conversion ad sequence.",
+    videoUrl: "https://fppmm7b7cy2oyyvq.public.blob.vercel-storage.com/Abram%20Anderson.mp4",
+    posterUrl: "/thumbnails/abram.jpg"
+  },
+  {
+    headline: "Scaling Customer Acquisition with Precision Media.",
+    brand: "CHRIS MARTIN",
+    category: "E-COMMERCE SCALE, MEDIA BUYING",
+    description: "By integrating real-time creative intelligence with advanced media buying tactics, we helped Chris scale his customer acquisition cost-effectively, maintaining a healthy ROAS even at peak volume.",
+    fixHighlight: "Scaled acquisition via creative-first media buying.",
+    videoUrl: "https://fppmm7b7cy2oyyvq.public.blob.vercel-storage.com/Chris%20Martin.mp4",
+    posterUrl: "/thumbnails/chris.jpg"
   }
 ];
