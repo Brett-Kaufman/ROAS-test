@@ -35,6 +35,16 @@
             overflow-x: hidden;
         }
 
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
         /* Tactical Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
@@ -126,7 +136,29 @@
 <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!-- Initial Loading / Watchdog Fallback -->
+        <div id="mount-fallback" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #000; font-family: 'Inter', sans-serif;">
+            <div class="spinner" style="margin-bottom: 24px;"></div>
+            <div style="font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5em; color: rgba(255,255,255,0.3); text-align: center; padding: 0 20px;">
+                Initializing Systems...
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mount Watchdog
+        window.mountWatchdog = setTimeout(function() {
+            var el = document.getElementById('mount-fallback');
+            if (el) {
+                el.innerHTML = '<div style="max-width: 320px; text-align: center; padding: 40px 20px;">' +
+                               '<div style="color: #ef4444; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; font-size: 14px;">Compatibility Error</div>' +
+                               '<div style="color: #9ca3af; font-size: 13px; line-height: 1.6;">This device had trouble loading the page. Please try Safari Private Mode or update iOS.</div>' +
+                               '</div>';
+            }
+        }, 3500);
+    </script>
+
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>
