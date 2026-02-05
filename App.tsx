@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import BookingSection from './components/BookingSection';
@@ -9,6 +8,17 @@ import Footer from './components/Footer';
 import Capabilities from './components/Capabilities';
 
 const App: React.FC = () => {
+  useEffect(() => {
+    // Stability guard for Mobile Safari/iOS
+    const ua = window.navigator.userAgent;
+    const isIos = /iPhone|iPad|iPod/.test(ua);
+    const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+    
+    if (isIos && isSafari) {
+      document.documentElement.classList.add('ios-safe');
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white selection:bg-blue-600 selection:text-white font-inter">
       {/* Muted Background Orbs - Reduced intensity for eye comfort */}

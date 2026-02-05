@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Ambient Overlays */}
-          <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+          <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none"></div>
           <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] z-20 bg-[length:100%_4px] opacity-20"></div>
 
           {/* Tactical HUD Overlays */}
@@ -78,8 +78,8 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Play Button Overlay */}
-          <div className="absolute inset-0 z-40 flex items-center justify-center">
-            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-blue-600/20 border border-blue-500/50 backdrop-blur-md flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:bg-blue-600/80 group-hover:shadow-[0_0_100px_rgba(37,99,235,0.8)] group-hover:border-white">
+          <div className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none">
+            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-blue-600/20 border border-blue-500/50 backdrop-blur-md flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:bg-blue-600/80 group-hover:shadow-[0_0_100px_rgba(37,99,235,0.8)] group-hover:border-white pointer-events-auto">
               <svg className="w-8 h-8 md:w-12 md:h-12 text-white ml-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>

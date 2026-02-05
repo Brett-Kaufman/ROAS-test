@@ -55,8 +55,8 @@ const AdVideoCard: React.FC<{ youtubeUrl: string }> = ({ youtubeUrl }) => {
         </div>
 
         {/* Play Button Overlay */}
-        <div className="absolute inset-0 z-40 flex items-center justify-center">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-blue-600/20 border border-blue-500/50 backdrop-blur-md flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:bg-blue-600/80 group-hover:shadow-[0_0_60px_rgba(37,99,235,0.7)]">
+        <div className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-blue-600/20 border border-blue-500/50 backdrop-blur-md flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:bg-blue-600/80 group-hover:shadow-[0_0_60px_rgba(37,99,235,0.7)] pointer-events-auto">
             <svg className="w-8 h-8 md:w-10 md:h-10 text-white ml-1.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
@@ -69,7 +69,7 @@ const AdVideoCard: React.FC<{ youtubeUrl: string }> = ({ youtubeUrl }) => {
         </div>
 
         {/* Decorative HUD Tag */}
-        <div className="absolute bottom-3 left-4 z-30 text-[7px] font-mono text-white/20 uppercase tracking-widest group-hover:text-blue-500/40 transition-colors">
+        <div className="absolute bottom-3 left-4 z-30 text-[7px] font-mono text-white/20 uppercase tracking-widest group-hover:text-blue-500/40 transition-colors pointer-events-none">
           Protocol: Creative_Intelligence_Stream
         </div>
       </div>
