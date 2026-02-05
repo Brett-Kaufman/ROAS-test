@@ -1,20 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { TITAN_BRANDS } from '../constants';
 
 const Hero: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(e => console.error("Playback failed:", e));
-      setIsPlaying(true);
-    }
-  };
-
   const scrollToBooking = () => {
     const section = document.getElementById('booking-section');
     section?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const openVideo = () => {
+    window.open("https://youtu.be/wFCOJiukljk", "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -29,46 +23,68 @@ const Hero: React.FC = () => {
         </h2>
       </div>
 
-      {/* Hero Video Block */}
+      {/* Hero Video Block - Clickable Tactical Card */}
       <div className="w-full max-w-5xl mx-auto px-4 mb-12 md:mb-16">
-        <div className="relative aspect-video border border-white/10 bg-black shadow-[0_0_80px_rgba(0,102,255,0.15)] group rounded-sm overflow-hidden">
-          {/* Tactical Corner Accents */}
-          <div className="absolute inset-0 pointer-events-none z-20">
+        <div 
+          onClick={openVideo}
+          className="relative aspect-video border border-white/10 bg-black shadow-[0_0_80px_rgba(0,102,255,0.15)] group rounded-sm overflow-hidden cursor-pointer"
+        >
+          {/* Thumbnail Image with scale effect */}
+          <img 
+            src="https://i.ytimg.com/vi/wFCOJiukljk/maxresdefault.jpg" 
+            alt="ROAS Accelerator Overview"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "https://i.ytimg.com/vi/wFCOJiukljk/hqdefault.jpg";
+            }}
+          />
+
+          {/* Scanning Line Effect */}
+          <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden opacity-30 group-hover:opacity-60 transition-opacity">
+            <div className="scanning-line"></div>
+          </div>
+
+          {/* Ambient Overlays */}
+          <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+          <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] z-20 bg-[length:100%_4px] opacity-20"></div>
+
+          {/* Tactical HUD Overlays */}
+          <div className="absolute inset-0 pointer-events-none z-30 p-4 md:p-8 flex flex-col justify-between">
+            <div className="flex justify-between items-start">
+              <div className="space-y-1">
+                <div className="w-8 h-[2px] bg-blue-500 group-hover:w-12 transition-all"></div>
+                <div className="text-[7px] md:text-[9px] font-mono text-white/60 uppercase tracking-widest">Protocol: Growth_Visualizer</div>
+              </div>
+              <div className="text-right">
+                <div className="text-[7px] md:text-[9px] font-mono text-blue-500/80 uppercase tracking-widest flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+                  FEED_LIVE
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-between items-end">
+              <div className="text-[7px] md:text-[9px] font-mono text-white/40 uppercase tracking-widest">
+                Lat: 40.7128° N | Lon: 74.0060° W
+              </div>
+              <div className="text-[7px] md:text-[9px] font-mono text-white/60 uppercase tracking-widest">Source: Primary_Intel</div>
+            </div>
+
+            {/* Tactical Corners */}
             <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-blue-600/40 group-hover:border-blue-500 transition-colors duration-500"></div>
             <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-blue-600/40 group-hover:border-blue-500 transition-colors duration-500"></div>
             <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-blue-600/40 group-hover:border-blue-500 transition-colors duration-500"></div>
             <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-blue-600/40 group-hover:border-blue-500 transition-colors duration-500"></div>
-            
-            <div className="absolute top-3 left-12 text-[7px] md:text-[9px] font-mono text-white/20 uppercase tracking-widest hidden sm:block">Protocol: Growth_Visualizer</div>
-            <div className="absolute bottom-3 right-12 text-[7px] md:text-[9px] font-mono text-white/20 uppercase tracking-widest hidden sm:block">Source: Primary_Intel</div>
           </div>
 
-          <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] z-10 bg-[length:100%_4px] opacity-20"></div>
-
-          <video
-            ref={videoRef}
-            src="https://fppmm7b7cy2oyyvq.public.blob.vercel-storage.com/5-Minute%20Breakdown%20.mp4#t=0.1"
-            className="w-full h-full object-cover"
-            controls={isPlaying}
-            playsInline
-            preload="metadata"
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-          />
-
-          {!isPlaying && (
-            <div 
-              className="absolute inset-0 z-30 flex items-center justify-center bg-black/40 cursor-pointer transition-all duration-500 hover:bg-black/20"
-              onClick={handlePlay}
-            >
-              <button 
-                className="w-20 h-20 md:w-32 md:h-32 rounded-full border border-blue-500/30 bg-blue-600/10 backdrop-blur-md flex items-center justify-center group/play transition-all duration-500 hover:scale-110 hover:border-blue-500 hover:bg-blue-600/20 shadow-[0_0_30px_rgba(37,99,235,0.2)]"
-                aria-label="Play Video"
-              >
-                <div className="ml-2 w-0 h-0 border-t-[12px] md:border-t-[20px] border-t-transparent border-l-[20px] md:border-l-[32px] border-l-white border-b-[12px] md:border-b-[20px] border-b-transparent transition-transform group-hover/play:scale-110"></div>
-              </button>
+          {/* Play Button Overlay */}
+          <div className="absolute inset-0 z-40 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-blue-600/20 border border-blue-500/50 backdrop-blur-md flex items-center justify-center transition-all duration-700 group-hover:scale-110 group-hover:bg-blue-600/80 group-hover:shadow-[0_0_100px_rgba(37,99,235,0.8)] group-hover:border-white">
+              <svg className="w-8 h-8 md:w-12 md:h-12 text-white ml-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
             </div>
-          )}
+          </div>
         </div>
       </div>
 
